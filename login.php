@@ -5,22 +5,25 @@ session_start();
 
 
 if (isset($_POST['Submit'])) {
-    /* Definição dos utilizadores 'estáticos' */
-    $logins = array('Admin' => 'Admin', 'username1' => 'password1', 'username2' => 'password2');
+    
+    /* Definição dos utilizadores 'estáticos' 
+    A implementar diferentes modos de permissões  */
 
-    /* Check and assign submitted Username and Password to new variable */
+    $logins = array('Admin' => 'Admin', 'User1' => 'Password1', 'Guest' => 'Guest');
+
+    /* Colocar valores introduzidos pelo utilizador em novas variáveis */
     $Username = isset($_POST['Username']) ? $_POST['Username'] : '';
     $Password = isset($_POST['Password']) ? $_POST['Password'] : '';
 
-    /* Check Username and Password existence in defined array */
+    /* Validar o nome utilizador / palavra passe */
     if (isset($logins[$Username]) && $logins[$Username] == $Password) {
-        /* Success: Set session variables and redirect to Protected page  */
+        /* Login válido  */
         $_SESSION['UserData']['Username'] = $logins[$Username];
 
         header("location:dashboard.php");
         exit;
     } else {
-        /*Unsuccessful attempt: Set error message */
+        /*Login inválido */
         echo "Erro! Credenciais inválidas";
         $msg = "<span style='color:red'>Invalid Login Details</span>";
     }
@@ -49,7 +52,8 @@ if (isset($_POST['Submit'])) {
 
 
 
-    <link href="css/login.css" rel="stylesheet">
+    <link rel="stylesheet" href="src/css/login.css">
+
 
 
 
@@ -60,7 +64,7 @@ if (isset($_POST['Submit'])) {
     <main class="form-signin">
         <form action="" method="post">
             <img src="img/estg.png" class="img-fluid" alt="Responsive image">
-            <h1 class="h3 mb-3 fw-normal">Faça o login!</h1>
+            <h1 class="h3 mb-3 fw-normal">Faça o login</h1>
 
             <div class="form-floating">
                 <input type="text" name="Username" class="form-control" id="floatingInput" placeholder="username">
@@ -72,12 +76,15 @@ if (isset($_POST['Submit'])) {
                 <label for="floatingPassword">Password</label>
             </div>
 
+            <!-- Ainda não funciona -- a implementar funcionalidade de lembrar sessão do utilizador recorrendo a uma cookie -->
+
             <div class="checkbox mb-3">
                 <label>
                     <input type="checkbox" value="remember-me"> Lembrar-me
                 </label>
             </div>
-            <button type="submit" name="Submit" class="button button-block" />Log In</button>
+
+            <button type="submit" name="Submit" class="button button-block" />Entrar</button>
             <p class="mt-5 mb-3 text-muted">&copy; 2021-2022</p>
         </form>
     </main>

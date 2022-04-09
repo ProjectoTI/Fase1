@@ -8,8 +8,8 @@ $sensores = array("temperatura", "humidade", "velocidade_vento");
 foreach ($sensores as $nome) {
 
     $nomes_sensores[] = $nome;
-    $valores_sensores[] = file_get_contents("api/sensores/$nome/valor.txt");
-    $datas_sensores[] = file_get_contents("api/sensores/$nome/data.txt");
+    $valores_sensores[] = file_get_contents("src/api/sensores/$nome/valor.txt");
+    $datas_sensores[] = file_get_contents("src/api/sensores/$nome/data.txt");
 }
 
 $nome_temperatura = $nomes_sensores[0];
@@ -27,15 +27,6 @@ $data_vento = $datas_sensores[2];
 
 
 
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,8 +34,7 @@ $data_vento = $datas_sensores[2];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>HTML 5 Boilerplate</title>
-    <!-- <link rel="stylesheet" href="style.css"> -->
+    <title>Sobre</title>
 
 
     <!-- Required meta tags -->
@@ -56,44 +46,62 @@ $data_vento = $datas_sensores[2];
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 
-    <link rel="stylesheet" href="css/table.css">
-    <link rel="stylesheet" href="css/menu.css">
-    <link rel="stylesheet" href="css/sobre.css">
-    <link href="css/grid.css" rel="stylesheet">
+    <link rel="stylesheet" href="src/css/sidebar.css">
+
+
+    <!-- Optional JavaScript -->
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
 
 </head>
 
-<!-- Optional JavaScript -->
 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-</script>
 
 <body>
-    <br>
-    <div class="container">
+
+    <main>
 
 
 
-        <h2 class="mt-4">Trabalho realizado por</h2>
+        <!--- SIDEBAR VERTICAL --->
 
 
-
-        <div id="colorlib-page">
-            <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
-            <aside id="colorlib-aside" role="complementary" class="js-fullheight">
-                <nav id="colorlib-main-menu" role="navigation">
+        <div id="menu-page">
+            <a href="#" class="js-menu-nav-toggle menu-nav-toggle"><i></i></a>
+            <aside id="menu-aside" role="complementary" class="js-fullheight">
+                <nav id="menu-main-menu" role="navigation">
                     <ul>
                         <li><a href="dashboard.php">Dashboard</a></li>
+
                         <li><a href="historico.php">Histórico</a></li>
-                        <li class="colorlib-active"><a href="sobre.php">Sobre</a></li>
+                        <li class="menu-active"><a href="sobre.php">Sobre</a></li>
                         <li><a href="sair.php">Sair</a></li>
                     </ul>
                 </nav>
             </aside>
+
+
+        </div>
+
+
+
+
+        <!--- SOBRE --->
+
+        <div class="container">
+
+
+
+            <h2 class="mt-4">Trabalho realizado por</h2>
+            <br>
+
+
+
 
             <div class="container">
                 <br />
@@ -166,7 +174,11 @@ $data_vento = $datas_sensores[2];
                 </div>
             </div>
 
+        </div>
 
+        </div>
+
+    </main>
 
 
 
