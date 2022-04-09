@@ -86,8 +86,8 @@ $data_vento = $datas_sensores[2];
                     <li class="colorlib-active"><a href="#">Dashboard</a></li>
 
                     <li><a href="historico.php">Histórico</a></li>
-                    <li><a href="#">Sobre</a></li>
-                    <li><a href="">Sair</a></li>
+                    <li><a href="sobre.php">Sobre</a></li>
+                    <li><a href="sair.php">Sair</a></li>
                 </ul>
             </nav>
         </aside> <!-- END COLORLIB-ASIDE -->
