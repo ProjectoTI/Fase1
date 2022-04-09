@@ -55,7 +55,7 @@ if (isset($_POST['Submit'])) {
     <link rel="stylesheet" href="src/css/login.css">
 
 
-
+    <title>Login</title>
 
 </head>
 
