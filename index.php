@@ -3,7 +3,7 @@
 if  (isset($logins[$Username]) && $logins[$Username] == $Password) {
     $_SESSION['logged_in'] = true;
     /* Se sim = redireciona para a dashboard */
-    header('Location: /dashboard.php');
+    header('Location: dashboard.php');
 }
 else
 {   

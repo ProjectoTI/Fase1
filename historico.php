@@ -56,7 +56,7 @@ $data_vento = $datas_sensores[2];
 
     <link rel="stylesheet" href="css/table.css">
     <link rel="stylesheet" href="css/menu.css">
-    <link href="grid.css" rel="stylesheet">
+    <link href="css/grid.css" rel="stylesheet">
 
 
 
