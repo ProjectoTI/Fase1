@@ -48,7 +48,7 @@ if (isset($_POST['Submit'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/jquery-1.10.2.min.js"></script>
 
 
 
@@ -62,7 +62,7 @@ if (isset($_POST['Submit'])) {
 <body class="text-center">
 
     <main class="form-signin">
-        <form action="" method="post">
+        <form action="#" method="post">
             <img src="img/estg.png" class="img-fluid" alt="Responsive image">
             <h1 class="h3 mb-3 fw-normal">Faça o login</h1>
 
@@ -84,7 +84,7 @@ if (isset($_POST['Submit'])) {
                 </label>
             </div>
 
-            <button type="submit" name="Submit" class="button button-block" />Entrar</button>
+            <button type="submit" name="Submit" class="button button-block">Entrar</button>
             <p class="mt-5 mb-3 text-muted">&copy; 2021-2022</p>
         </form>
     </main>
