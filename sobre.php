@@ -148,7 +148,8 @@ $data_vento = $datas_sensores[2];
                             <ul class="list-group list-group-flush">
 
                                 <li class="list-group-item liitem"><strong>Nº Aluno:</strong>
-                                    <span class="pull-right">EasyTech</span>
+                                    <span class="pull-right">2211082
+                                    </span>
                                 </li>
                             </ul>
                             <div class="panel-footer">

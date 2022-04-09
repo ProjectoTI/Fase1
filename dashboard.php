@@ -30,6 +30,7 @@ $data_humidade = $datas_sensores[1];
 $nome_vento = $nomes_sensores[2];
 $valor_vento = $valores_sensores[2];
 $data_vento = $datas_sensores[2];
+
 ?>
 
 
@@ -56,6 +57,7 @@ $data_vento = $datas_sensores[2];
 
     <link rel="stylesheet" href="css/table.css">
     <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/dashboard.css">
 
 
     <title>Estação Meteorológica Inteligente</title>
@@ -65,6 +67,7 @@ $data_vento = $datas_sensores[2];
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
     </script>
@@ -90,7 +93,7 @@ $data_vento = $datas_sensores[2];
                     <li><a href="sair.php">Sair</a></li>
                 </ul>
             </nav>
-        </aside> <!-- END COLORLIB-ASIDE -->
+        </aside>
 
         <div id="colorlib-main">
             <section class="ftco-section pt-4 mb-5 ftco-intro">
@@ -99,8 +102,8 @@ $data_vento = $datas_sensores[2];
                         <div class="card-body"> <img src="img/estg.png" width="300px" class="float-end"
                                 alt="Logotipo do IPLeiria">
                             <h1> Estação Meteorológica Inteligente </h1>
-                            <p> Bem vindo UTILIZADOR <b> <?php echo $_SESSION['UserData']['Username']; ?> </b> </p>
-                            <small> Tecnologias de Internet - Engenharia
+                            <p> Bem-vindo <b> <?php echo $_SESSION['UserData']['Username']; ?> </b> </p>
+                            <small> Projecto IoT - Tecnologias de Internet - Engenharia
                                 Informática
                             </small>
                         </div>
@@ -109,26 +112,25 @@ $data_vento = $datas_sensores[2];
 
         </div>
     </div>
-    </section>
-    </div>
-    </div>
-
-    </section>
 
     <nav class="navbar navbar-dark bg-dark">
         <!-- Navbar content -->
     </nav>
 
 
-    <!--- HEADER --->
+
 
     <br>
-    <!--- CARDS --->
+
+
+    <!--- GRÁFICOS CHART.JS --->
+    <!--- NOTA: Os gráficos são apenas para fins demonstrativos e ainda não fazem sincronização com a API, tendo como objectivo implementar essa funcionalidade na Fase 2 --->
+
     <div class="container text-center" ;>
         <div class="row" ;>
             <div class="col-sm-4">
                 <div class="card">
-                    <div class="card-header"><b><?php echo $nome_humidade.$valor_humidade;?></b></div>
+                    <div class="card-header"><b>Humidade do Ar</b></div>
 
                     <canvas id="myChart" width="400" height="400"></canvas>
                     <script>
@@ -138,7 +140,7 @@ $data_vento = $datas_sensores[2];
                         data: {
                             labels: [20, 15, 10, -5, 0, 5, 10, 15, 20, 25, 30],
                             datasets: [{
-                                    label: 'Humidade Absoluta do Ar / Temperatura do Ar',
+                                    label: 'Humidade Absoluta (g/m³) / Temperatura do Ar (Cº)',
                                     data: [0.9, 1.4, 2.1, 3.3, 4.9, 6.8, 9.4, 12.9, 17.3, 23.1, 30],
                                     backgroundColor: [
                                         'rgba(255, 99, 132, 0.2)',
@@ -176,14 +178,14 @@ $data_vento = $datas_sensores[2];
 
 
 
-                    <div class="card-footer"><b>Atualização:</b>2022/03/01 14:31 -
+                    <div class="card-footer"><b>Atualização: </b><?php echo $data_humidade; ?>
                         <a href="@"></a>
                     </div>
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="card">
-                    <div class="card-header"><b><?php echo $nome_temperatura.$valor_temperatura;?></b></div>
+                    <div class="card-header"><b>Temperatura Ambiente</b></div>
                     <canvas id="myChart2" width="400" height="400"></canvas>
                     <script>
                     const ctx2 = document.getElementById('myChart2').getContext('2d');
@@ -223,14 +225,14 @@ $data_vento = $datas_sensores[2];
                     });
                     </script>
 
-                    <div class="card-footer"><b>Atualização:</b>2022/03/01 14:31 -
+                    <div class="card-footer"><b>Atualização: </b><?php echo $data_temperatura; ?>
                         <a href="@"></a>
                     </div>
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="card">
-                    <div class="card-header"><b><?php echo $nome_vento.$valor_vento;?></b></div>
+                    <div class="card-header"><b>Velocidade do Vento</b></div>
                     <canvas id="myChart3" width="400" height="400"></canvas>
                     <script>
                     const ctx3 = document.getElementById('myChart3').getContext('2d');
@@ -278,9 +280,19 @@ $data_vento = $datas_sensores[2];
                         }
                     });
                     </script>
+                    <div class="card-footer"><b>Atualização: </b><?php echo $data_vento; ?>
+                        <a href="@"></a>
+                    </div>
                 </div>
             </div>
+
             <br>
+
+            <!--- TABELA DE SENSORES / ACTUADORES --->
+
+
+
+
             <div class="container-xl">
                 <div class="table-responsive">
                     <div class="table-wrapper">
@@ -289,7 +301,10 @@ $data_vento = $datas_sensores[2];
                                 <div class="col-sm-6">
                                     <h2>Lista de Sensores / Actuadores </h2>
                                 </div>
-                                <div class="col-sm-6">
+
+                                <!-- EM CONSTRUÇÃO -- Filtro de estados dos sensores
+                                 
+                                    <div class="col-sm-6">
                                     <div class="btn-group" data-toggle="buttons">
                                         <label class="btn btn-info active">
                                             <input type="radio" name="status" value="all" checked="checked"> All
@@ -304,7 +319,10 @@ $data_vento = $datas_sensores[2];
                                             <input type="radio" name="status" value="expired"> Expired
                                         </label>
                                     </div>
-                                </div>
+                                      
+                            </div>
+                              !-->
+
                             </div>
                         </div>
                         <table class="table table-striped table-hover">
@@ -315,49 +333,48 @@ $data_vento = $datas_sensores[2];
                                     <th>Data de Atualização</th>
                                     <th>Estado Alertas</th>
                                     <th>Valor</th>
-                                    <th>Histórico</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr data-status="active">
+                                <tr data-status="activo">
                                     <td>1</td>
                                     <td><a href="#">Sensor de Humidade</a></td>
                                     <td><?php echo $data_humidade; ?></td>
                                     <td><span class="label label-success">Activo</span></td>
-                                    <td><?php echo $valor_humidade; ?></td>
-                                    <td><a href="#" class="btn btn-sm manage">Aceder</a></td>
+                                    <td><?php echo $valor_humidade." g/m³"; ?></td>
+                                    <td><a href="#">
                                 </tr>
-                                <tr data-status="active">
+                                <tr data-status="activo">
                                     <td>2</td>
                                     <td><a href="#">Sensor de Temperatura</a></td>
                                     <td><?php echo $data_temperatura; ?></td>
                                     <td><span class="label label-warning">Activo</span></td>
-                                    <td><?php echo $valor_temperatura; ?></td>
-                                    <td><a href="#" class="btn btn-sm manage">Aceder</a></td>
+                                    <td><?php echo $valor_temperatura." Cº"; ?></td>
+                                    <td><a href="#">
                                 </tr>
-                                <tr data-status="active">
+                                <tr data-status="activo">
                                     <td>3</td>
                                     <td><a href="#">Sensor de Vento</a></td>
                                     <td><?php echo $data_vento; ?></td>
                                     <td><span class="label label-success">Activo</span></td>
                                     <td><?php echo $valor_vento; ?></td>
-                                    <td><a href="#" class="btn btn-sm manage">Aceder</a></td>
+                                    <td><a href="#">
                                 </tr>
-                                <tr data-status="inactive">
+                                <tr data-status="inactivo">
                                     <td>4</td>
                                     <td><a href="#">Sensor de precipitação</a></td>
                                     <td>06/09/2016</td>
                                     <td><span class="label label-danger">Inactivo</span></td>
-                                    <td>Romania</td>
-                                    <td><a href="#" class="btn btn-sm manage">Aceder</a></td>
+                                    <td>Nulo</td>
+                                    <td><a href="#">
                                 </tr>
-                                <tr data-status="inactive">
+                                <tr data-status="inactivo">
                                     <td>5</td>
                                     <td><a href="#">???</a></td>
                                     <td>12/08/2017</td>
                                     <td><span class="label label-warning">Inactivo</span></td>
-                                    <td>Germany</td>
-                                    <td><a href="#" class="btn btn-sm manage">Aceder</a></td>
+                                    <td>Nulo</td>
+                                    <td><a href="#">
                                 </tr>
                             </tbody>
                         </table>

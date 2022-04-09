@@ -1,1 +1,1 @@
-Velocidade do Vento: 
+velocidade_vento

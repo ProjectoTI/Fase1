@@ -81,9 +81,10 @@ $data_vento = $datas_sensores[2];
     <div class="container">
 
 
+        <!-- A página de histórico irá ser deprecada por uma página individual para cada sensor/actuador na Fase 2 -->
 
         <h2 class="mt-4">Histórico de Actualização</h2>
-        <p>///.</p>
+        <p>Esta página lista o histórico de cada sensor / actuador da estação.</p>
 
 
         <div id="colorlib-page">
@@ -129,7 +130,7 @@ $data_vento = $datas_sensores[2];
                 <thead>
                     <tr>
                         <th scope="col"><?php
-                echo nl2br(file_get_contents("api/sensores/$nome_temperatura/logs.txt"));
+                echo nl2br(file_get_contents("api/sensores/$nome_humidade/logs.txt"));
                 ?></th>
             </table>
 
@@ -144,7 +145,7 @@ $data_vento = $datas_sensores[2];
                 <thead>
                     <tr>
                         <th scope="col"><?php
-                echo nl2br(file_get_contents("api/sensores/$nome_temperatura/logs.txt"));
+                echo nl2br(file_get_contents("api/sensores/$nome_vento/logs.txt"));
                 ?></th>
             </table>
 

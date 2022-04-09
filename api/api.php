@@ -3,10 +3,10 @@
 
 header('Content-Type: text/html; charset=utf-8');
 
-
+$metodo = $_SERVER['REQUEST_METHOD'];
 
 // Pedidos POST para enviar dados para API
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($metodo === 'POST') {
     echo "recebido um POST";
     print_r($_POST);
 
@@ -18,15 +18,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if(isset($_POST["valor"])){
 
-            if(isset($_POST["hora"])){
+            if(isset($_POST["data"])){
                
                  // Escrever para os ficheiros correspondentes
-                echo file_put_contents("files/$nome_sensor/nome.txt", $_POST["nome"] );
-                echo file_put_contents("files/$nome_sensor/valor.txt", $_POST["valor"] );
-                echo file_put_contents("files/$nome_sensor/hora.txt", $_POST["hora"] );
+                echo file_put_contents("sensores/$nome_sensor/nome.txt", $_POST["nome"] );
+                echo file_put_contents("sensores/$nome_sensor/valor.txt", $_POST["valor"] );
+                echo file_put_contents("sensores/$nome_sensor/data.txt", $_POST["data"] );
 
                 // Escrever para o log do sensor, com linebreak e modo append
-                echo file_put_contents("files/$nome_sensor/logs.txt", $_POST["hora"].";".$_POST["valor"].PHP_EOL, FILE_APPEND);
+                echo file_put_contents("sensores/$nome_sensor/logs.txt", $_POST["data"]." - ".$_POST["valor"].PHP_EOL, FILE_APPEND);
 
                 echo "Valores escritos com sucesso!";
 
@@ -41,10 +41,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
    
 
 }
-// Pedidos GET para receber dados da API
-else if ($_SERVER['REQUEST_METHOD'] === 'GET') { 
-    echo "recebido um GET";
-    print_r($_GET);
+else if ($metodo === 'GET') { 
+    //echo "Recebido um GET";
+
+    
+  
+        print_r($_GET);
+   
+   
     
     if(isset($_GET["nome"])){
         $nome_sensor = $_GET["nome"];
@@ -54,7 +58,7 @@ else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     } 
     else
     {
-        echo "URL incorrecto!";
+        //echo "URL incorrecto!";
         http_response_code(400);
 
     }
@@ -64,3 +68,5 @@ else
 
     echo "Método nao permitido";
 }
+
+?>
