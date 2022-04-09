@@ -76,7 +76,7 @@ if (isset($_POST['Submit'])) {
                 <label for="floatingPassword">Password</label>
             </div>
 
-            <!-- Ainda não funciona -- a implementar funcionalidade de lembrar sessão do utilizador recorrendo a uma cookie -->
+            <!-- Ainda não funciona / a implementar funcionalidade de lembrar sessão do utilizador recorrendo a uma cookie -->
 
             <div class="checkbox mb-3">
                 <label>
